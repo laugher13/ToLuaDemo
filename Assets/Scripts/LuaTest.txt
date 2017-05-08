@@ -1,0 +1,41 @@
+﻿luanet.load_assembly("UnityEngine")
+GameObject=luanet.import_type("UnityEngine.GameObject");  
+PrimitiveType=luanet.import_type("UnityEngine.PrimitiveType"); 
+
+ButtonPanel = {};
+local this = ButtonPanel;
+
+local transform;
+local gameObject;
+
+local message;
+
+function OnButtonClick(obj)
+	gameObject=obj;
+	transform=gameObject.transform;
+	this.btnContent= transform:FindChild("BtnContent").gameObject;
+
+	message=gameObject:GetComponent("LuaBehaviour");	
+
+	--this.btnContent:GetComponent("Button").onClick:AddListener(this.OnBtnClick);
+	message:AddClick(this.btnContent,this.OnBtnClick)
+end
+
+function ButtonPanel.OnBtnClick(go)
+	boxGameObject=GameObject.CreatePrimitive(PrimitiveType.Cube)
+	boxGameObject.name="ageBox100"		
+	print("call success");
+end
+
+function OnIntroClick(obj)
+	gameObject=obj;
+	transform=gameObject.transform;
+	this.btnClose= transform:FindChild("BtnClose").gameObject;
+
+	message=gameObject:GetComponent("LuaBehaviour");
+	message:AddClick(this.btnClose,this.OnCloseClick)
+end
+
+function ButtonPanel.OnCloseClick(go)
+	gameObject:SetActive(false)
+end

@@ -1,0 +1,15 @@
+﻿luanet.load_assembly("UnityEngine")
+GameObject=luanet.import_type("UnityEngine.GameObject");  
+PrimitiveType=luanet.import_type("UnityEngine.PrimitiveType"); 
+
+local boxGameObject;
+
+function Add(num)
+	num=num+1
+	return num
+end
+
+function NewGameObject()
+boxGameObject=GameObject.CreatePrimitive(PrimitiveType.Cube)
+boxGameObject.name="ageBox100"		
+end

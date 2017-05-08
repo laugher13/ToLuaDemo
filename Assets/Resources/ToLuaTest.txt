@@ -1,0 +1,39 @@
+﻿luanet.load_assembly("UnityEngine");  
+GameObject=luanet.import_type("UnityEngine.GameObject");  
+Vector3=luanet.import_type("UnityEngine.Vector3");  
+PrimitiveType=luanet.import_type("UnityEngine.PrimitiveType"); 
+luanet.import_type("UnityEngine.UI");  
+
+local boxGameObj;  
+
+function doClick()
+print("hello world")
+end
+
+function luaTest(num)
+	num=num+1
+	return num
+end
+
+function ShowGameObject(gameObject)
+	gameObject:SetActive(true)
+	
+end
+
+function HideGameObject(gameObject)
+	gameObject:SetActive(false)	
+end
+
+function NewGameObject()
+	boxGameObj=GameObject.CreatePrimitive(PrimitiveType.Cube)
+	boxGameObj.name="ageBox100"		
+end
+
+function Add(num)
+	num=num+1
+	return num	
+end
+
+function OnButtonClick(button)
+ button.onClick.AddListener(doClick);
+end
